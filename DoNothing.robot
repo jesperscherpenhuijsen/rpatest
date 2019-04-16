@@ -41,7 +41,7 @@
       <object class="Transition" serializationversion="3" id="3">
         <property name="name" class="String">Do Nothing</property>
         <property name="stepAction" class="DoNothing"/>
-        <property name="elementFinders" class="ElementFinders"/>
+        <property name="elementFinders" class="ElementFinders" id="4"/>
         <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
         <property name="comment">
           <null/>
@@ -49,7 +49,25 @@
         <property name="enabled" idref="1"/>
         <property name="changedProperties" class="java.util.HashSet"/>
       </object>
-      <object class="End" id="4"/>
+      <object class="Transition" serializationversion="3" id="5">
+        <property name="name" class="String">Load Page</property>
+        <property name="stepAction" class="LoadPage2">
+          <property name="urlProvider" class="kapow.robot.plugin.common.stepaction.urlprovider2.ValueURLProvider2">
+            <property name="URL" class="String">www.nos.nl</property>
+          </property>
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="25">
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+          </property>
+        </property>
+        <property name="elementFinders" idref="4"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="1"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+      <object class="End" id="6"/>
     </steps>
     <blockEndStep class="BlockEndStep"/>
     <edges class="ArrayList">
@@ -59,9 +77,17 @@
       </object>
       <object class="TransitionEdge">
         <from idref="3"/>
-        <to idref="4"/>
+        <to idref="5"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="5"/>
+        <to idref="6"/>
       </object>
     </edges>
   </property>
-  <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="25"/>
+  <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="25">
+    <property name="SSLUsage" class="com.kapowtech.net.ssl.SSLUsage">
+      <property name="enum-name" class="String">TLS1x_SSL3_TLSHello</property>
+    </property>
+  </property>
 </object>
